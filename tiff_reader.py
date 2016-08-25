@@ -17,4 +17,10 @@ imarray = np.array(im)
 
 print('imarray.shape: {}  im.size: {}'.format(imarray.shape, im.size))
 
+# idxs_more = np.where(imarray >= imarray.max(0.5))
+idxs_less = np.where(imarray < imarray.max()*0.02)
+imarray[idxs_less] = np.uint16(0)
+
+im = Image.fromarray(imarray)
+
 im.show()
